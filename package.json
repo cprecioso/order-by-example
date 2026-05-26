@@ -2,6 +2,17 @@
   "name": "@cprecioso/order-by-example",
   "version": "0.0.0",
   "type": "module",
+  "description": "Build a comparator from example orderings. Give it lists of items in the order you want, and it returns a `compare` function you can hand to `Array.prototype.sort`.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cprecioso/order-by-example.git"
+  },
+  "homepage": "https://github.com/cprecioso/order-by-example#readme",
+  "bugs": {
+    "url": "https://github.com/cprecioso/order-by-example/issues"
+  },
+  "author": "Carlos Precioso <npm@precioso.design>",
+  "license": "ISC",
   "packageManager": "yarn@4.15.0",
   "exports": {
     ".": {
