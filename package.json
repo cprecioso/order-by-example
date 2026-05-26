@@ -1,4 +1,34 @@
 {
-  "name": "2026-05-25-order-by-example",
-  "packageManager": "yarn@4.15.0"
+  "name": "@cprecioso/order-by-example",
+  "version": "0.0.0",
+  "type": "module",
+  "packageManager": "yarn@4.15.0",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsdown",
+    "docs": "typedoc --plugin typedoc-plugin-mdn-links",
+    "prepack": "yarn run build",
+    "test": "vitest"
+  },
+  "devDependencies": {
+    "@cprecioso/tsconfig": "^4.0.0",
+    "prettier": "3.8.3",
+    "prettier-plugin-organize-imports": "4.3.0",
+    "prettier-plugin-pkg": "0.22.1",
+    "prettier-plugin-sh": "0.18.1",
+    "tsdown": "^0.22.0",
+    "typedoc": "^0.28.19",
+    "typedoc-plugin-mdn-links": "^5.1.1",
+    "typescript": "~6.0.3",
+    "vitest": "^4.1.6"
+  }
 }
