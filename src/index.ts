@@ -11,7 +11,7 @@ export interface Sort<T> {
    *
    * // But usually, you would use it with Array.prototype.sort:
    * const items = ['banana', 'cherry', 'apple'];
-   * items.toSorted(sort.compare); // ['apple', 'banana', 'cherry']
+   * items.sort(sort.compare); // ['apple', 'banana', 'cherry']
    */
   compare(a: T, b: T): 0 | 1 | -1;
 
@@ -24,8 +24,10 @@ export interface Sort<T> {
 /**
  * Creates a {@link Sort} instance based on the provided examples.
  * Each example is an iterable of items, and the order of items in the example defines their relative order.
- * The compare function will return -1 if the first item comes before the second item in any of the examples,
- * 1 if it comes after, and 0 if they are considered equal or if neither item appears in any example.
+ *
+ * The compare function looks for the first example in which both items appear. If found, it returns
+ * -1, 1, or 0 based on their indices in that example. If no single example contains both items, it
+ * returns 0. Ordering is not bridged transitively across examples.
  *
  * @example
  * const sort = makeSort([
@@ -35,15 +37,17 @@ export interface Sort<T> {
  *
  * console.log(sort.compare('apple', 'banana')); // -1
  * console.log(sort.compare('banana', 'apple')); // 1
- * console.log(sort.compare('apple', 'date')); // -1
- * console.log(sort.compare('date', 'apple')); // 1
  * console.log(sort.compare('banana', 'cherry')); // -1
  * console.log(sort.compare('cherry', 'banana')); // 1
- * console.log(sort.compare('date', 'cherry')); // 0 (neither appears in the same example)
+ * console.log(sort.compare('banana', 'date')); // -1
+ * console.log(sort.compare('apple', 'date')); // 0 (no single example contains both)
+ * console.log(sort.compare('date', 'cherry')); // 0 (no single example contains both)
  *
- * console.log(sort.sortedExamples()); // ['apple', 'banana', 'cherry', 'date']
+ * // sortedExamples() flattens all example items in sorted order. Items that appear in multiple
+ * // examples are included once per example.
+ * console.log(sort.sortedExamples()); // ['apple', 'banana', 'banana', 'cherry', 'date']
  *
- * console.log(['banana', 'cherry', 'apple', 'date'].sort(sort.compare)); // ['apple', 'banana', 'cherry', 'date']
+ * console.log(['banana', 'cherry', 'apple'].sort(sort.compare)); // ['apple', 'banana', 'cherry']
  */
 export const makeSort = <T>(examples: Iterable<Iterable<T>>): Sort<T> => {
   const exampleMaps = Array.from(
