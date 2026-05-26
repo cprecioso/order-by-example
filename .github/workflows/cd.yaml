@@ -7,6 +7,10 @@ on:
 
 name: Continuous Deployment
 
+concurrency:
+  group: "release"
+  cancel-in-progress: false
+
 jobs:
   build:
     uses: ./.github/workflows/ci.yaml
