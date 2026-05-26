@@ -1,3 +1,4 @@
 [tools]
 node = "lts"
+npm = "latest"
 "npm:corepack" = "latest"

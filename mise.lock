@@ -32,6 +32,32 @@ url = "https://nodejs.org/dist/v24.16.0/node-v24.16.0-darwin-x64.tar.gz"
 checksum = "sha256:edaca9bd58ec8e92037dac4e877d52f6b8f430b81c18b57e264b4e2fb111cd56"
 url = "https://nodejs.org/dist/v24.16.0/node-v24.16.0-win-x64.zip"
 
+[[tools.npm]]
+version = "11.15.0"
+backend = "aqua:npm/cli"
+
+[tools.npm."platforms.linux-arm64"]
+url = "https://registry.npmjs.org/npm/-/npm-11.15.0.tgz"
+
+[tools.npm."platforms.linux-arm64-musl"]
+url = "https://registry.npmjs.org/npm/-/npm-11.15.0.tgz"
+
+[tools.npm."platforms.linux-x64"]
+url = "https://registry.npmjs.org/npm/-/npm-11.15.0.tgz"
+
+[tools.npm."platforms.linux-x64-musl"]
+url = "https://registry.npmjs.org/npm/-/npm-11.15.0.tgz"
+
+[tools.npm."platforms.macos-arm64"]
+checksum = "blake3:0e6b73464d92708d47d539dd51924e6e40c77143c8ad503471b655c3e393c57b"
+url = "https://registry.npmjs.org/npm/-/npm-11.15.0.tgz"
+
+[tools.npm."platforms.macos-x64"]
+url = "https://registry.npmjs.org/npm/-/npm-11.15.0.tgz"
+
+[tools.npm."platforms.windows-x64"]
+url = "https://registry.npmjs.org/npm/-/npm-11.15.0.tgz"
+
 [[tools."npm:corepack"]]
 version = "0.35.0"
 backend = "npm:corepack"
