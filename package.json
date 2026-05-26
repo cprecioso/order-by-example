@@ -1,6 +1,6 @@
 {
   "name": "@cprecioso/order-by-example",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "type": "module",
   "description": "Build a comparator from example orderings. Give it lists of items in the order you want, and it returns a `compare` function you can hand to `Array.prototype.sort`.",
   "repository": {
