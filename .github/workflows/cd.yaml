@@ -16,17 +16,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: googleapis/release-please-action@v4
+      - uses: googleapis/release-please-action@v5
         id: release
         with: { release-type: node }
 
     outputs:
-      release_created: ${{ steps.release.outputs.release_created }}
+      releases_created: ${{ steps.release.outputs.releases_created }}
 
   publish-npm:
     runs-on: ubuntu-latest
 
-    if: ${{ needs.release-please.outputs.release_created }}
+    if: ${{ fromJson(needs.release-please.outputs.releases_created) }}
     needs:
       - build
       - release-please
@@ -52,7 +52,7 @@ jobs:
   publish-docs:
     runs-on: ubuntu-latest
 
-    if: ${{ needs.release-please.outputs.release_created }}
+    if: ${{ fromJson(needs.release-please.outputs.releases_created) }}
     needs:
       - build
       - release-please
